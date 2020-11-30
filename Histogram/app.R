@@ -1,11 +1,3 @@
-####################################
-# Data Professor                   #
-# http://youtube.com/dataprofessor #
-# http://github.com/dataprofessor  #
-####################################
-
-# Modified from https://shiny.rstudio.com/tutorial/written-tutorial/lesson1/
-
 library(shiny)
 data(airquality)
 
@@ -13,7 +5,7 @@ data(airquality)
 ui <- fluidPage(
   
   # App title ----
-  titlePanel("Ozone level!"),
+  titlePanel("Ozone"),
   
   # Sidebar layout with input and output definitions ----
   sidebarLayout(
@@ -24,8 +16,8 @@ ui <- fluidPage(
       # Input: Slider for the number of bins ----
       sliderInput(inputId = "bins",
                   label = "Number of bins:",
-                  min = 1,
-                  max = 50,
+                  min = 0,
+                  max = 100,
                   value = 30)
       
     ),
@@ -50,9 +42,9 @@ server <- function(input, output) {
     x    <- na.omit(x)
     bins <- seq(min(x), max(x), length.out = input$bins + 1)
     
-    hist(x, breaks = bins, col = "#75AADB", border = "black",
+    hist(x, breaks = bins, col = "red", border = "black",
          xlab = "Ozone level",
-         main = "Histogram of Ozone level")
+         main = "Ozone level")
     
   })
   
